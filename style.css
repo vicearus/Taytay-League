@@ -1,0 +1,32 @@
+.Legendary {
+    color: #ff8000
+}
+
+.Epic {
+    color: #A335EE
+}
+
+.Rare {
+    color: #0070FF
+}
+
+.Uncommon {
+    color: #1EFF0C
+}
+
+.Common {
+    color:#FFFFFF
+}
+
+.containerEl span{
+    /* background-color: darkgray; */
+    -webkit-text-stroke: .15px;
+    -webkit-text-stroke-color: black;
+}
+
+.side-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 1 50%;
+}
