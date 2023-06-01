@@ -1068,15 +1068,15 @@ function coinFlip(flipResults) {
 // packListElement.textContent = packList
 // prompt to choose which pack to draw
 
-answer = prompt("Type 1 to open a starter pack, 2 for a super starter, and 3 for a tournament pack")
-if (answer == "1") {
-    drawStarterPack()
-}
-if (answer == "2") {
-    drawSuperStarterPack()
-} if (answer == "3") {
-    drawTournamentPack()
-}
+// answer = prompt("Type 1 to open a starter pack, 2 for a super starter, and 3 for a tournament pack")
+// if (answer == "1") {
+//     drawStarterPack()
+// }
+// if (answer == "2") {
+//     drawSuperStarterPack()
+// } if (answer == "3") {
+//     drawTournamentPack()
+// }
 
 function pageLoadDrawnPacksHandler(drawnPacksObject) {
     drawnPacksObject.forEach(deckObject => {
