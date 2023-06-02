@@ -523,6 +523,12 @@ commonCardsList = [
     , "Galio"
     , "Galio"
     , "Gnar"
+    , "Gnar"
+    , "Gnar"
+    , "Gnar"
+    , "Gnar"
+    , "Gnar"
+    , "Gnar"
     , "Heimerdinger"
     , "Heimerdinger"
     , "Heimerdinger"
@@ -975,30 +981,27 @@ function drawTournamentPack() {
 }
 
 function generateDeckElement(deckObject, deckUserName) {
-    // containerEl = document.createElement("li")
-    // containerEl.className = "containerEl"
-    // containerEl.setAttribute("id", "next")
     nameTypeEl = document.createElement("div")
     nameTypeEl.textContent = `Username: ${deckUserName}, Deck Type: ${deckObject.deckType}`
     cardListEl = document.createElement("div")
     cardListEl.textContent = `${deckObject.packContents.toString()}`
-    // console.log(document.getElementById("containerEl"))
-    // if (document.getElementById("containerEl") == null) {
-    //     document.getElementById("addPacksHere").append(containerEl)
-    // }
     document.getElementById("next").appendChild(nameTypeEl)
 
 }
 
 function generateCharacterNames(deckObject) {
-    deckObject.packContents.forEach(element => {
-        char = element.character
-        rarity = element.rarity
-        spanEl = document.createElement("span")
-        spanEl.textContent = `${char}, `
-        spanEl.setAttribute("class", `${rarity}`)
-        document.getElementById("next").appendChild(spanEl)
-    });
+    if (deckObject != null) {
+        deckObject.packContents.forEach(element => {
+            char = element.character
+            rarity = element.rarity
+            spanEl = document.createElement("span")
+            spanEl.textContent = `${char}, `
+            spanEl.setAttribute("class", `${rarity}`)
+            document.getElementById("next").appendChild(spanEl)
+        })
+    } else {
+        return;
+    };
 
 }
 
@@ -1061,39 +1064,56 @@ function coinFlip(flipResults) {
     }
 }
 
-// Display drawn decks
-// packList = localStorage.getItem("Drawn Packs")
-// packListElement = document.createElement("ul");
-// document.getElementById("drawnDecks").append(packListElement)
-// packListElement.textContent = packList
-// prompt to choose which pack to draw
-
-// answer = prompt("Type 1 to open a starter pack, 2 for a super starter, and 3 for a tournament pack")
-// if (answer == "1") {
-//     drawStarterPack()
-// }
-// if (answer == "2") {
-//     drawSuperStarterPack()
-// } if (answer == "3") {
-//     drawTournamentPack()
-// }
 
 function pageLoadDrawnPacksHandler(drawnPacksObject) {
-    drawnPacksObject.forEach(deckObject => {
-        generateDeckElement(deckObject, deckObject.user)
-        generateCharacterNames(deckObject)
-    })
+    if (drawnPacksObject != null) {
+        drawnPacksObject.forEach(deckObject => {
+            generateDeckElement(deckObject, deckObject.user)
+            generateCharacterNames(deckObject)
+        })
+    } else {
+        return;
+    }
 
 }
 
-// characterObject = {
-//     "character": characterName,
-//     "rarity": characterRarity,
-// }
 
-// deckObject = {
-//     "deckType": "Super Starter Pack",
-//     "user": deckUserName,
-//     "packContents": objectResults
-// }
+testArray = ["me"]
+function sort(array) {
+    // Create copy of array to be sorted
+    sortArray = Array.from(array)
+    console.log(sortArray.length)
+    // Array of identical elements to be pushed into here
+    allIdenticalElements = []
+    // identical elements to be pushed into here
+    identicalElementArray = []
+    do {
+        // value of 1st element saved here
+        key = sortArray[0]
+        console.log(key)
+        for (i = 0; i < sortArray.length; i++) {
+            // if value of array index equals the value of key, splice sortArray at that index 
+            // and push it into identicalElementArray
+            if (sortArray[i] === key) {
+                splicedElement = sortArray.splice(i, 1)
+                identicalElementArray.push(splicedElement[0])
+                splicedElement = []
+                i--
+            }
+        }
+        allIdenticalElements.push(identicalElementArray)
+        identicalElementArray = []
+    }
+    while (sortArray.length != 0)
+    console.log(allIdenticalElements)
+
+}
+
+function sortAll(remainingCards) {
+    remainingCards.forEach(element => {
+        sort(element);
+    })
+}
+
+sortAll(remainingCards)
 
