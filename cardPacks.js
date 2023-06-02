@@ -9,7 +9,6 @@ legendaryCardsList = [
     "Teemo",
     "Thresh",
     "Yasuo"]
-
 epicCardsList = [
     "Amumu"
     , "Amumu"
@@ -783,7 +782,6 @@ commonCardsList = [
 // Local storage handling + defining variables on page load
 if (localStorage.getItem("Remaining Cards") === null) {
     remainingCards = [legendaryCardsList, epicCardsList, rareCardsList, uncommonCardsList, commonCardsList]
-    drawnPacks = []
     drawnPacksObject = []
     localStorage.setItem("Remaining Cards", JSON.stringify(remainingCards))
     localStorage.setItem("Remaining Legendaries", JSON.stringify(legendaryCardsList))
@@ -800,8 +798,7 @@ else {
     uncommonCardsList = JSON.parse(localStorage.getItem("Remaining Uncommons"))
     commonCardsList = JSON.parse(localStorage.getItem("Remaining Commons"))
     remainingCards = [legendaryCardsList, epicCardsList, rareCardsList, uncommonCardsList, commonCardsList]
-    drawnPacks = JSON.parse(localStorage.getItem("Drawn Packs"))
-    drawnPacksObject = JSON.parse(localStorage.getItem("Drawn Packs Object"))
+    drawnPacksObject = JSON.parse(localStorage.getItem("Drawn Packs Object")) || []
     pageLoadDrawnPacksHandler(drawnPacksObject)
     console.log("Drawn Packs: ", drawnPacksObject)
     console.log("Remaining Cards: ", remainingCards)
@@ -922,10 +919,8 @@ function drawStarterPack() {
         "user": deckUserName,
         "packContents": objectResults
     }
-    drawnPacks.push(drawResults)
     drawnPacksObject.push(deckObject)
     localStorage.setItem("Drawn Packs Object", JSON.stringify(drawnPacksObject))
-    localStorage.setItem("Drawn Packs", JSON.stringify(drawnPacks))
     localStorage.setItem("Remaining Cards", JSON.stringify(remainingCards))
     console.log("Here is your starter pack ")
     console.log(drawResults)
@@ -970,10 +965,8 @@ function drawTournamentPack() {
         "user": deckUserName,
         "packContents": objectResults
     }
-    drawnPacks.push(drawResults)
     drawnPacksObject.push(deckObject)
     localStorage.setItem("Drawn Packs Object", JSON.stringify(drawnPacksObject))
-    localStorage.setItem("Drawn Packs", JSON.stringify(drawnPacks))
     localStorage.setItem("Remaining Cards", JSON.stringify(remainingCards))
     console.log("Here is your tournament pack ")
     console.log(drawResults)
@@ -1047,10 +1040,8 @@ function drawSuperStarterPack() {
         "user": deckUserName,
         "packContents": objectResults
     }
-    drawnPacks.push(drawResults)
     drawnPacksObject.push(deckObject)
     localStorage.setItem("Drawn Packs Object", JSON.stringify(drawnPacksObject))
-    localStorage.setItem("Drawn Packs", JSON.stringify(drawnPacks))
     localStorage.setItem("Remaining Cards", JSON.stringify(remainingCards))
     console.log("Here is your super starter pack ")
     console.log(drawResults)
@@ -1086,7 +1077,7 @@ testArray = ["me"]
 function sort(array) {
     // Create copy of array to be sorted
     sortArray = Array.from(array)
-    console.log(sortArray.length)
+    // console.log(sortArray.length)
     // Array of identical elements to be pushed into here
     allIdenticalElements = []
     // identical elements to be pushed into here
@@ -1094,7 +1085,7 @@ function sort(array) {
     do {
         // value of 1st element saved here
         key = sortArray[0]
-        console.log(key)
+        // console.log(key)
         for (i = 0; i < sortArray.length; i++) {
             // if value of array index equals the value of key, splice sortArray at that index 
             // and push it into identicalElementArray
@@ -1109,7 +1100,7 @@ function sort(array) {
         identicalElementArray = []
     }
     while (sortArray.length != 0)
-    console.log(allIdenticalElements)
+    // console.log(allIdenticalElements)
 
 }
 
